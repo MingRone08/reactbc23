@@ -11,6 +11,9 @@ import StyleComponent from './StyleComponent/StyleComponent';
 import ThayDoiMauSac from './StateDemo/ThayDoiMauSac';
 import BaiTapChonXe from './StateDemo/BaiTapChonXe';
 import RenderArray from './RenderArray/RenderArray';
+import DemoProps from './Props/DemoProps/DemoProps';
+import ShoesShop from './Props/ShoesShop/ShoesShop';
+import BaiTapXemChiTiet from './Props/BaiTapXemChiTiet/BaiTapXemChiTiet';
 
 function App() {
   return (
@@ -23,7 +26,10 @@ function App() {
       {/* <StyleComponent/> */}
       {/* <ThayDoiMauSac/> */}
       {/* <BaiTapChonXe/> */}
-      <RenderArray/>
+      {/* <RenderArray/> */}
+      {/* <DemoProps/> */}
+      {/* <ShoesShop/> */}
+      <BaiTapXemChiTiet/>
     </div>
   );
 }
