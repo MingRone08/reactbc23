@@ -15,25 +15,29 @@ import DemoProps from './Props/DemoProps/DemoProps';
 import ShoesShop from './Props/ShoesShop/ShoesShop';
 import BaiTapXemChiTiet from './Props/BaiTapXemChiTiet/BaiTapXemChiTiet';
 import TangGiamSoLuong from './DemoRedux/TangGiamSoLuong/TangGiamSoLuong';
+import BaiTapChonXeRedux from './DemoRedux/BaiTapChonXeRedux/BaiTapChonXeRedux';
+import BaiTapGioHangRedux from './DemoRedux/BaiTapGioHangRedux/BaiTapGioHangRedux';
 
 function App() {
-  return (
-    <div className="App">
-      {/* <BTLayout /> */}
-      {/* <DataBinding /> */}
-      {/* <HandleEvent /> */}
-      {/* <StateDemo /> */}
-      {/* <TangGiamFontSize/> */}
-      {/* <StyleComponent/> */}
-      {/* <ThayDoiMauSac/> */}
-      {/* <BaiTapChonXe/> */}
-      {/* <RenderArray/> */}
-      {/* <DemoProps/> */}
-      {/* <ShoesShop/> */}
-      {/* <BaiTapXemChiTiet/> */}
-      <TangGiamSoLuong />
-    </div>
-  );
+	return (
+		<div className="App">
+			{/* <BTLayout /> */}
+			{/* <DataBinding /> */}
+			{/* <HandleEvent /> */}
+			{/* <StateDemo /> */}
+			{/* <TangGiamFontSize/> */}
+			{/* <StyleComponent/> */}
+			{/* <ThayDoiMauSac/> */}
+			{/* <BaiTapChonXe/> */}
+			{/* <RenderArray/> */}
+			{/* <DemoProps/> */}
+			{/* <ShoesShop/> */}
+			{/* <BaiTapXemChiTiet/> */}
+			{/* <TangGiamSoLuong /> */}
+			{/* <BaiTapChonXeRedux /> */}
+			<BaiTapGioHangRedux />
+		</div>
+	);
 }
 
 export default App;
