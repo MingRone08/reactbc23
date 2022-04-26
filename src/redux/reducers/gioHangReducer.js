@@ -28,6 +28,21 @@ export const gioHangReducer = (state = stateDefault, action) => {
             return gioHang;
         }
 
+        case 'TANG_GIAM_SO_LUONG': {
+            let gioHang = [...state];;
+            //Tìm ra cần tăng giảm
+            let sp = gioHang.find(spGH => spGH.maSP === action.maSPClick);
+            if (sp) {
+                sp.soLuong += action.soLuong;
+                if (sp.soLuong < 1) {
+                    alert('Số lượng không được nhỏ hơn 1');
+                    sp.soLuong -= action.soLuong;
+                    return gioHang;
+                }
+            }
+            return gioHang;
+        }
+
         default: return state; //00xx
     }
 }

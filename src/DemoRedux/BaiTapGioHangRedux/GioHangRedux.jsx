@@ -3,12 +3,32 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class GioHangRedux extends Component {
+
+    tinhTongSoLuong = () => {
+        // let tongSL = 0;
+        // for (let spGH of this.props.stateGioHang) {
+        //     tongSL += spGH.soLuong;
+        // }
+
+        let tongSoLuong =  this.props.stateGioHang.reduce((soLuong, spGH) => {
+            return soLuong + spGH.soLuong;
+        }, 0);
+
+        let tongTien = this.props.stateGioHang.reduce((tt, spGH) => {
+            //Mỗi lần duyệt qua mỗi sản phẩm tính tổng tiền của sp đó rồi cộng dồn vào kết quả của hàm reduce
+            let tong = spGH.giaBan * spGH.soLuong;
+            return tt + tong;
+        }, 0);
+
+        return tongSoLuong + ' - ' + tongTien.toLocaleString();
+    }
+
     render() {
         return (
             <div>
                 <h3>Giỏ Hàng</h3>
                 <div className="text-right">
-                    <span className='text-danger font-weight-bold'>Giỏ Hàng(0)</span>
+                    <span className='text-danger font-weight-bold'>Giỏ Hàng({this.tinhTongSoLuong()})</span>
                 </div>
                 <table className='table'>
                     <thead>
@@ -28,9 +48,17 @@ class GioHangRedux extends Component {
                             <td>{spGH.maSP}</td>
                             <td>{spGH.tenSP}</td>
                             <td><img src={spGH.hinhAnh} alt="..." width={50} height={50} /></td>
-                            <td>{spGH.giaBan}</td>
-                            <td>{spGH.soLuong}</td>
-                            <td>{spGH.giaBan * spGH.soLuong}</td>
+                            <td>{spGH.giaBan.toLocaleString()}</td>
+                            <td>
+                                <button className="btn btn-primary mr-2" onClick={() => {
+                                    this.props.tangGiamSoLuong(spGH.maSP, 1)
+                                }}>+</button>
+                                {spGH.soLuong}
+                                <button className="btn btn-primary ml-2" onClick={() => {
+                                    this.props.tangGiamSoLuong(spGH.maSP, -1)
+                                }}>+</button>
+                            </td>
+                            <td>{(spGH.giaBan * spGH.soLuong).toLocaleString()}</td>
                             <td>
                                 <button className="btn btn-danger" onClick={() => {
                                     this.props.xoaGioHang(spGH.maSP)
@@ -65,7 +93,15 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(action);
         },
         tangGiamSoLuong: (maSPClick, soLuong) => {
-            //Xử lý           
+            //Xử lý    
+            //Tạo ra 1 action
+            const action = {
+                type: 'TANG_GIAM_SO_LUONG',
+                maSPClick,
+                soLuong
+            }     
+            //Đưa lên redux
+            dispatch(action);  
         }
     }
 }
